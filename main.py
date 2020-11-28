@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 @app.route("/sms", methods=['GET', 'POST'])
 def incoming_sms():
@@ -17,6 +17,7 @@ def incoming_sms():
     else:
         resp.message("Your text was:\n{}".format(body))
     return str(resp)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=80)
