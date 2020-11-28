@@ -72,7 +72,7 @@ def call(phonenumber,filename):
     #make the call using phonenumber and audio
 
     call = client.calls.create(
-        url='http://nevercallagain.frost.cx/twiml/'+filename+'.Xml',
+        url='http://nevercallagain.frost.cx/twiml/'+filename+'.xml',
         to = phonenumber,
         from_ = '+447411226037'
     )
