@@ -1,9 +1,22 @@
 import subprocess
 import base64
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, send_from_directory
 from twilio.twiml.messaging_response import MessagingResponse
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='')
+
+
+@app.route("/audio/<path:path>")
+def send_audio_files(path):
+    """Sends the audio files out"""
+    return send_from_directory("audio", path)
+
+
+@app.route("/twiml/<path:path>")
+def send_twiml_files(path):
+    """Sends the XML files out"""
+    return send_from_directory("twiml", path)
+
 
 @app.route("/sms", methods=['GET', 'POST'])
 def incoming_sms():
