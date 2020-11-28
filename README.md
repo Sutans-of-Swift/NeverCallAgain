@@ -4,7 +4,7 @@ Project for Hacknotts2020
 
 Substitute for phonecalls for really awkward people.
 
-*Magic of AI*
+Uses the *magic of AI*.
 
 ### Text to Voice
 - Twilio parses text to extract target number and message
