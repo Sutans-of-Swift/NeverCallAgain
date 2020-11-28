@@ -10,4 +10,7 @@ magic of ai
 
 voice 2 text
 
-audio input -> twilio -> poli -> user
+- twilio parses text
+- text 2 poli
+- Audio file
+- audio file piped back to twilio
