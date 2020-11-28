@@ -1,4 +1,5 @@
 import subprocess
+import base64
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -10,8 +11,10 @@ def incoming_sms():
     # Get the message the user sent our Twilio number
     body = request.values.get('Body', None)
     print(body)
+    # Encode body as base64 for safe transport as argument.
+    b64_body = base64.urlsafe_b64encode(body.encode("utf-8"))
     # Spawn Sam's module to do work on the message.
-    subprocess.run(["python3", "test.py", body])
+    subprocess.run(["python3", "test.py", b64_body])
     # Start our TwiML response to be sent as a SMS
     resp = MessagingResponse()
     resp.message("Your message was:\n{}".format(body))
