@@ -1,16 +1,16 @@
 # NeverCallAgain
 
-Hacknotts2020
+Project for Hacknotts2020
 
-text 2 audio
+Substitute for phonecalls for really awkward people.
 
-substitute for phonecalls
+*Magic of AI*
 
-magic of ai
+### Text to Voice
+- Twilio parses text to extract target number and message
+- Message sent to AWS Polly
+- Polly produces audio file to S3 bucket
+- Audio file piped back to twilio
 
-voice 2 text
-
-- twilio parses text
-- text 2 poli
-- Audio file
-- audio file piped back to twilio
+### Voice to Text
+Take anything spoken into the called phone and texts it back to the text sender.
