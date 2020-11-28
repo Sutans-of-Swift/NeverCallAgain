@@ -16,7 +16,7 @@ class pollyInstance():
         # need to strip the number here :)
         self._number, self._text = self.deriveNumberAndMessage(text)
         # md5 of message body
-        self._filename = self.getFileName(text)
+        self._filename = self.deriveName(text)
         # Create a client using the credentials and region defined in the [adminuser]
         # section of the AWS credentials file (~/.aws/credentials).
         self._session = Session(profile_name="sultan")
@@ -49,7 +49,7 @@ class pollyInstance():
             message += inter[i]
         return number, message
 
-    def getFileName(self, text):
+    def deriveName(self, text):
         to_be_hashed = text + str(time.time_ns())
         hasher = hashlib.md5()
         hasher.update(to_be_hashed.encode("utf-8"))
