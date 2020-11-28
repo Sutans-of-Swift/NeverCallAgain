@@ -6,13 +6,13 @@ from twilio.twiml.messaging_response import MessagingResponse
 app = Flask(__name__, static_url_path='')
 
 
-@app.route("/audio/<path:path>")
+@app.route("/audio/<path:path>", methods=['GET', 'POST'])
 def send_audio_files(path):
     """Sends the audio files out"""
     return send_from_directory("audio", path)
 
 
-@app.route("/twiml/<path:path>")
+@app.route("/twiml/<path:path>", methods=['GET', 'POST'])
 def send_twiml_files(path):
     """Sends the XML files out"""
     return send_from_directory("twiml", path)
