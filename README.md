@@ -1,6 +1,6 @@
 # NeverCallAgain
 
-Project for Hacknotts2020
+Project for Hacknotts2020.
 
 Substitute for phonecalls for really awkward people.
 
