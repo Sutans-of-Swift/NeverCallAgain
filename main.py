@@ -11,7 +11,7 @@ def incoming_sms():
     body = request.values.get('Body', None)
     print(body)
     # Spawn Sam's module to do work on the message.
-    subprocess.run(["python3", "test.py", body])
+    subprocess.run(["python3", "test.py"])
     # Start our TwiML response to be sent as a SMS
     resp = MessagingResponse()
     resp.message("Your message was:\n{}".format(body))
