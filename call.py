@@ -60,7 +60,7 @@ class pollyInstance():
 def call(phonenumber,filename):
     #Create XML file with audiofile to allow for the call to access 
     Response = ET.Element("Response")
-    ET.SubElement(Response, "Play").text = 'http://nevercallagain.frost.cx/audio/'+filename+'.mp3:8080'
+    ET.SubElement(Response, "Play").text = 'http://nevercallagain.frost.cx:8080/audio/'+filename+'.mp3'
 
     tree = ET.ElementTree(Response)
     tree.write("files/twiml/"+filename + ".xml")
@@ -72,7 +72,7 @@ def call(phonenumber,filename):
     #make the call using phonenumber and audio
 
     call = client.calls.create(
-        url='http://nevercallagain.frost.cx/twiml/'+filename+'.xml:8080',
+        url='http://nevercallagain.frost.cx:8080/twiml/'+filename+'.xml',
         to = phonenumber,
         from_ = '+447411226037'
     )
