@@ -3,7 +3,7 @@ import base64
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='web/files')
 
 @app.route("/sms", methods=['GET', 'POST'])
 def incoming_sms():
@@ -22,4 +22,4 @@ def incoming_sms():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=80)
