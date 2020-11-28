@@ -36,7 +36,7 @@ class pollyInstance():
                                                         Text=self._text)
 
         filename = (self._filename + '.mp3')
-        file = open("audio/"filename, 'wb')
+        file = open("audio/"+filename, 'wb')
         file.write(response['AudioStream'].read())
         file.close()
 
@@ -63,7 +63,7 @@ def call(phonenumber,filename):
     ET.SubElement(Response, "Play").text = 'http://nevercallagain.frost.cx/audio/'+filename+'.mp3'
 
     tree = ET.ElementTree(Response)
-    tree.write("twiml/"filename + ".xml")
+    tree.write("twiml/"+filename + ".xml")
     
     #getting twilio authorisation
     account_sid = os.environ['TWILIO_ACCOUNT_SID']
