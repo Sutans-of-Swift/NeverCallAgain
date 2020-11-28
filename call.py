@@ -31,7 +31,7 @@ class pollyInstance():
     def parseResponse(self):
         """performs the call to the polly client and writes the output to file.
         """
-        response = self._polly_client.synthesize_speech(VoiceId='Joanna',
+        response = self._polly_client.synthesize_speech(VoiceId='Geraint',
                                                         OutputFormat='mp3',
                                                         Text=self._text)
 
