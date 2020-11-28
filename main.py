@@ -1,3 +1,4 @@
+import subprocess
 from flask import Flask, request, redirect
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -9,12 +10,17 @@ def incoming_sms():
     # Get the message the user sent our Twilio number
     body = request.values.get('Body', None)
     print(body)
-    # Start our TwiML response
+    # Spawn Sam's module to do work on the message.
+    subprocess.run(["python3", "test.py", body])
+    # Start our TwiML response to be sent as a SMS
     resp = MessagingResponse()
-    # Determine the right reply for this message
-    resp.message("Your text was:\n{}".format(body))
+    resp.message("Your message was:\n{}".format(body))
     return str(resp)
 
 
 if __name__ == "__main__":
     app.run(debug=True, port=80)
+
+
+open()
+
