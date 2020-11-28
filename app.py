@@ -14,7 +14,7 @@ def incoming_sms():
     # Encode body as base64 for safe transport as argument.
     b64_body = base64.urlsafe_b64encode(body.encode("utf-8"))
     # Spawn Sam's module to do work on the message.
-    subprocess.run(["python3", "test.py", b64_body])
+    subprocess.run(["python3", "call.py", b64_body])
     # Start our TwiML response to be sent as a SMS
     resp = MessagingResponse()
     resp.message("Your message was:\n{}".format(body))
