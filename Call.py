@@ -1,6 +1,4 @@
 gimport xml.etree.cElementTree as ET
-import uuid
-import datetime
 import os
 from twilio.rest import Client
 
