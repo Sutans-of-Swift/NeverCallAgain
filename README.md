@@ -12,5 +12,13 @@ Uses the *magic of AI*.
 - Polly produces audio file to S3 bucket
 - Audio file piped back to twilio
 
+Message format:
+```
+5555 555 5555
+This is a message I want to be
+spoken aloud to the number on
+the first line.
+```
+
 ### Voice to Text
 Take anything spoken into the called phone and texts it back to the text sender.
