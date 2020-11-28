@@ -12,10 +12,7 @@ def incoming_sms():
     # Start our TwiML response
     resp = MessagingResponse()
     # Determine the right reply for this message
-    if body == 'hello':
-        resp.message("Hi!")
-    else:
-        resp.message("Your text was:\n{}".format(body))
+    resp.message("Your text was:\n{}".format(body))
     return str(resp)
 
 
