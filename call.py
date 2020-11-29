@@ -62,8 +62,9 @@ def call(phonenumber, filename):
     Response = ET.Element("Response")
     ET.SubElement(
         Response, "Play", loop="1").text = 'http://nevercallagain.frost.cx/audio/'+filename+'.mp3'
-    ET.SubElement(Response, "Record", maxLength="10", finishOnKey="*",
-                  transcribeCallback="http://nevercallagain.frost.cx/receiver")
+    ET.SubElement(Response, "Record", maxLength="10",
+       action="http://nevercallagain.frost.cx/null",
+       transcribeCallback="http://nevercallagain.frost.cx/receiver")
 
     tree = ET.ElementTree(Response)
     tree.write("twiml/"+filename + ".xml")
