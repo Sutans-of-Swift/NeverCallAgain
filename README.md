@@ -26,6 +26,14 @@ the first line.
 
 Take anything spoken into the called phone and texts it back to the text sender.
 
+## Requirements
+A twilio number.
+
+Python packages:
+ - `flask`
+ - `boto3`
+ - `twilio`
+
 ## During HackNotts2020 use it by texting:
 `+44 7411 226037`
 
