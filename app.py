@@ -41,7 +41,7 @@ def receiver():
     """Parses the transcript and texts it to the original sender."""
     reponse = VoiceResponse()
     print(reponse)
-    return reponse
+    return "A response."
 
 
 if __name__ == "__main__":
