@@ -90,4 +90,3 @@ body = str(base64.urlsafe_b64decode(sys.argv[1]), "utf-8")
 polly = pollyInstance(body)
 polly.parseResponse()
 call(polly.getNumber(), polly.getFileName())
-
