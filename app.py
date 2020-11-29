@@ -47,7 +47,7 @@ def receiver():
 @app.route("/null", methods=['GET', 'POST'])
 def return_null():
     """Returns null."""
-    return None
+    return "Success!"
 
 
 if __name__ == "__main__":
