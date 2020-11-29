@@ -61,8 +61,7 @@ def call(phonenumber, filename):
     # Create XML file with audiofile to allow for the call to access
     Response = ET.Element("Response")
     ET.SubElement(
-        Response, "Play").text = 'http://nevercallagain.frost.cx/audio/'+filename+'.mp3'
-
+        Response, "Play", loop="1").text = 'http://nevercallagain.frost.cx/audio/'+filename+'.mp3'
     ET.SubElement(Response, "Record", maxLength="10", finishOnKey="*",
                   transcribeCallback="http://nevercallagain.frost.cx/receiver")
 
