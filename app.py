@@ -2,7 +2,7 @@ import subprocess
 import base64
 from flask import Flask, request, redirect, send_from_directory
 from twilio.twiml.messaging_response import MessagingResponse
-from twilio.twiml.voice_response import VoiceResponse, Record
+#from twilio.twiml.voice_response import VoiceResponse, Record
 
 app = Flask(__name__, static_url_path='')
 
@@ -39,8 +39,8 @@ def incoming_sms():
 @app.route("/receiver", methods=['GET', 'POST'])
 def receiver():
     """Parses the transcript and texts it to the original sender."""
-    reponse = VoiceResponse()
-    print(reponse)
+    transcription = request.values.get('TranscriptionText', None)
+    print(transcription)
     return "A response."
 
 
