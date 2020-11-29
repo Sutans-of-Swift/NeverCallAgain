@@ -28,10 +28,17 @@ def incoming_sms():
     b64_body = base64.urlsafe_b64encode(body.encode("utf-8"))
     # Spawn Sam's module to do work on the message.
     subprocess.run(["python3", "call.py", b64_body])
+    print(request.values)
     # Start our TwiML response to be sent as a SMS
-    resp = MessagingResponse()
-    resp.message("Your message was:\n{}".format(body))
+    #resp = MessagingResponse()
+    #resp.message("Your message was:\n{}".format(body))
     return str(resp)
+
+
+@app.route("/receiver", methods=['GET', 'POST'])
+def receiver():
+    """Parses the transcript and texts it to the original sender."""
+    return
 
 
 if __name__ == "__main__":
