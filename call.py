@@ -81,7 +81,13 @@ def call(phonenumber,filename):
     )
 
 
+def cleanup_files():
+    path = ""
+    if os.path.getmtime(path) < time.time-300.0:
+        os.remove(path)
+
 body = str(base64.urlsafe_b64decode(sys.argv[1]), "utf-8")
 polly = pollyInstance(body)
 polly.parseResponse()
 call(polly.getNumber(), polly.getFileName())
+
