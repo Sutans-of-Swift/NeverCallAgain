@@ -41,13 +41,7 @@ def receiver():
     """Parses the transcript and texts it to the original sender."""
     transcription = request.values.get('TranscriptionText', None)
     print(transcription)
-    return "A response."
-
-
-@app.route("/null", methods=['GET', 'POST'])
-def return_null():
-    """Returns null."""
-    return "Success!"
+    return request.values
 
 
 if __name__ == "__main__":

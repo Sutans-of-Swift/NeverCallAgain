@@ -63,7 +63,7 @@ def call(phonenumber, filename):
     ET.SubElement(
         Response, "Play", loop="1").text = 'http://nevercallagain.frost.cx/audio/'+filename+'.mp3'
     ET.SubElement(Response, "Record", maxLength="10",
-       action="http://nevercallagain.frost.cx/null",
+       action="http://nevercallagain.frost.cx/receiver",
        transcribeCallback="http://nevercallagain.frost.cx/receiver")
 
     tree = ET.ElementTree(Response)
