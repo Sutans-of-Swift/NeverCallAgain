@@ -24,15 +24,15 @@ def incoming_sms():
     """Send a dynamic reply to an incoming text message"""
     # Get the message the user sent our Twilio number
     body = request.values.get('Body', None)
-    print(body)
+    incoming_number = request.values.get('From', None)
+    #print(body)
     # Encode body as base64 for safe transport as argument.
     b64_body = base64.urlsafe_b64encode(body.encode("utf-8"))
-    # Spawn Sam's module to do work on the message.
+    # Spawn other program to do work on the message.
     subprocess.run(["python3", "call.py", b64_body])
-    print(request.values)
     # Start our TwiML response to be sent as a SMS
-    #resp = MessagingResponse()
-    #resp.message("Your message was:\n{}".format(body))
+    resp = MessagingResponse()
+    resp.message("Your message was:\n{}".format(body))
     return str(resp)
 
 
@@ -41,7 +41,7 @@ def receiver():
     """Parses the transcript and texts it to the original sender."""
     reponse = VoiceResponse()
     print(reponse)
-    return
+    return reponse
 
 
 if __name__ == "__main__":
