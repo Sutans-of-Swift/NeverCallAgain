@@ -29,4 +29,4 @@ Take anything spoken into the called phone and texts it back to the text sender.
 ## During HackNotts2020 use it by texting:
 `+44 7411 226037`
 
-The First line should be the phone number you want to call, and the rest of the message is read aloud.
+The first line should be the phone number you want to call, and the rest of the message is read aloud.
