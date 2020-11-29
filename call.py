@@ -84,4 +84,6 @@ def call(phonenumber,filename):
 body = str(base64.urlsafe_b64decode(sys.argv[1]), "utf-8")
 polly = pollyInstance(body)
 polly.parseResponse()
+print("Call started")
 call(polly.getNumber(), polly.getFileName())
+print("Call finished")
