@@ -57,34 +57,42 @@ class pollyInstance():
         return result_str.hex()
 
 
-def call(phonenumber,filename):
-    #Create XML file with audiofile to allow for the call to access 
+def call(phonenumber, filename):
+    # Create XML file with audiofile to allow for the call to access
     Response = ET.Element("Response")
-    ET.SubElement(Response, "Play").text = 'http://nevercallagain.frost.cx/audio/'+filename+'.mp3'
+    ET.SubElement(
+        Response, "Play").text = 'http://nevercallagain.frost.cx/audio/'+filename+'.mp3'
 
     ET.SubElement(Response, "Record", maxLength="10", finishOnKey="*",
-    transcribeCallback="http://nevercallagain.frost.cx/receiver")
+                  transcribeCallback="http://nevercallagain.frost.cx/receiver")
 
     tree = ET.ElementTree(Response)
     tree.write("twiml/"+filename + ".xml")
-    
-    #getting twilio authorisation
+
+    # getting twilio authorisation
     account_sid = os.environ['TWILIO_ACCOUNT_SID']
     auth_token = os.environ['TWILIO_AUTH_TOKEN']
     client = Client(account_sid, auth_token)
-    #make the call using phonenumber and audio
+    # make the call using phonenumber and audio
 
     call = client.calls.create(
         url='http://nevercallagain.frost.cx/twiml/'+filename+'.xml',
-        to = phonenumber,
-        from_ = '+447411226037'
+        to=phonenumber,
+        from_='+447411226037'
     )
 
 
 def cleanup_files():
-    path = ""
-    if os.path.getmtime(path) < time.time-300.0:
-        os.remove(path)
+    dirname = os.path.dirname(__file__)
+    audio = os.path.join(dirname, 'twiml/')
+    for file in os.walk(audio):
+        if os.path.getmtime(file) < time.time-300.0:
+            os.remove(file)
+    twiml = os.path.join(dirname, 'audio/')
+    for file in os.walk(twiml):
+        if os.path.getmtime(file) < time.time-300.0:
+            os.remove(file)
+
 
 body = str(base64.urlsafe_b64decode(sys.argv[1]), "utf-8")
 polly = pollyInstance(body)
